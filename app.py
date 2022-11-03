@@ -11,8 +11,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from forms import UserForm, LoginForm, TranscriptForm
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:password@localhost/class"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:password@localhost/class"
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY");
 
 db = SQLAlchemy(app)
@@ -30,13 +30,14 @@ with app.app_context():
     db.create_all()
     
 # Set upload folder for transcriptions
-UPLOAD_FOLDER = "flaskclass/static/transcripts"
+UPLOAD_FOLDER = "static/transcripts/"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
       
 # ===== Routes =====
 @app.route("/", methods=["GET", "POST"])
 def index():
     if current_user.is_authenticated == False:
+        session['url'] = url_for('dashboard')
         flash("Create an account to get the full Clask experience", category="disclaimer")
     transcript = ""
     if request.method == "POST":
@@ -68,7 +69,6 @@ def transcript(transcript):
     # if not logged in, redirect to previous page after logging in
     if current_user.is_authenticated == False:
         session['url'] = url_for('transcript', transcript=transcript)
-        print(session["url"])
 
     if form.validate_on_submit():   
         if current_user.is_authenticated:
@@ -84,7 +84,7 @@ def transcript(transcript):
 @app.route("/flaskclass/signup", methods=["GET", "POST"])
 def signup():
     form = UserForm()
-    
+    session['url'] = url_for('dashboard')
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first() # finds user by email
         if user is None:
@@ -105,7 +105,6 @@ def signup():
 @app.route("/flaskclass/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
-    
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
         if user:
@@ -125,6 +124,7 @@ def login():
 @app.route("/logout", methods=["GET", "POST"])
 @login_required
 def logout():
+    session['url'] = url_for('dashboard')
     logout_user()
     return redirect(url_for("login"))
 
