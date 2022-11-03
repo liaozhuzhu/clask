@@ -1,7 +1,7 @@
 <div class="navbar">
     {%if current_user.is_authenticated%}
         <div class="navbar-header">
-            <div class="logo"><a href="{{url_for('index')}}"><img src="{{url_for('static', filename='/images/clask.png') }}" class="logo"></a></div>
+            <div class="logo"><a href="{{url_for('index')}}"><img src="{{url_for('static', filename='images/clask.png') }}" class="logo"></a></div>
             <a href="{{url_for('dashboard')}}">Dashboard <i class="fa-solid fa-table-columns"></i></a>
         </div>
     {%else%}
