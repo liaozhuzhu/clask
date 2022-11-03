@@ -17,7 +17,7 @@ def upload(filename):
                 data = _file.read(chunk_size)
                 if not data:
                     break
-                yield data
+                yield data 
 
     upload_response = requests.post(upload_endpoint,
                             headers=headers,
