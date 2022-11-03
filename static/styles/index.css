@@ -127,7 +127,7 @@ a{
   padding: 10px;
   padding-inline: 20px;
   text-decoration: none;
-  position: sticky;
+  position: fixed;
   z-index: 1030;
   top: 0;
 }
@@ -212,7 +212,7 @@ a{
 
 /* ===== Login/Signup===== */
 .form-container {
-  height: 91vh;
+  height: 100vh;
   background-image: url("/static/images/user-background.png");
 }
 
@@ -268,7 +268,7 @@ a{
 
 /* ==== Dashboard ===== */
 .container-main {
-  min-height: 91vh;
+  min-height: 100vh;
   width: 100%;
   background-color: var(--blue);
 }
