@@ -28,6 +28,10 @@ def load_user(user_id):
     
 with app.app_context():         
     db.create_all()
+    
+# Set upload folder for transcriptions
+UPLOAD_FOLDER = "static/transcripts"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
       
 # ===== Routes =====
 @app.route("/", methods=["GET", "POST"])
@@ -45,9 +49,11 @@ def index():
             flash("Please Upload a File", category="error")
         
         if file:
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"]), file.filename)
             path_to_download_folder = str(f"{os.path.expanduser( '~' )}/Downloads")
             # path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
-            path = f"{path_to_download_folder}/{file.filename}"
+            # path = f"{path_to_download_folder}/{file.filename}"
+            path = (f"/static/transcripts/{file.filename}")
         
             audio_url = upload(path)
             transcript = save_transcript(audio_url, path)
