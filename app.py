@@ -30,7 +30,7 @@ with app.app_context():
     db.create_all()
     
 # Set upload folder for transcriptions
-UPLOAD_FOLDER = "static/transcripts"
+UPLOAD_FOLDER = "flaskclass/static/transcripts"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
       
 # ===== Routes =====
