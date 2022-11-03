@@ -213,7 +213,7 @@ a{
 /* ===== Login/Signup===== */
 .form-container {
   height: 91vh;
-  background-image: url("../images/user-background.png");
+  background-image: url("/static/images/user-background.png");
 }
 
 .user-container {
