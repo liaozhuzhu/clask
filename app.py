@@ -16,7 +16,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967c
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY");
 
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+migrate = Migrate(app, db) 
 
 login_manager = LoginManager()
 login_manager.init_app(app)

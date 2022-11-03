@@ -17,7 +17,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("", validators=[DataRequired()])
     submit = SubmitField("Login")
     
-class TranscriptForm(FlaskForm):
+class TranscriptForm(FlaskForm): 
     title = StringField("", validators=[DataRequired()])
     content = StringField("", validators=[DataRequired()], widget=TextArea())
     author = StringField("", validators=[]) 

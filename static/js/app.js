@@ -63,7 +63,7 @@ function startRecording() {
 		
 		//disable the encoding selector
 		// encodingTypeSelect.disabled = true;
-
+ 
 		recorder = new WebAudioRecorder(input, {
 		  workerDir: "static/js/", // must end with slash
 		  encoding: encodingType,

@@ -38,7 +38,7 @@ def pull(transcript_id):
     pulling_endpoint = transcript_endpoint + "/" + transcript_id
     pulling_response = requests.get(pulling_endpoint, headers=headers)
     return pulling_response.json()
-
+ 
 #save transcription to txt file
 def get_transcription_result_url(audio_url):
     transcript_id = transcribe(audio_url)
