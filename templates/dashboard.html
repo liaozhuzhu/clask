@@ -6,7 +6,7 @@
             <h1>All Transcripts</h1>
         </div>
     </div>
-    <div class="dashboard-grid">
+    <div class="dashboard-grid"> 
         {%for transcript in transcripts%}
             {%if transcript.transcriptor.id == current_user.id %}
             <div class="transcript">
@@ -17,7 +17,7 @@
                     <a href="{{url_for('flaskclass_transcript', id=transcript.id)}}" class="btn-primary">View <i class="fa-solid fa-magnifying-glass"></i></a>
                     <a href="{{url_for('delete_transcript', id=transcript.id)}}" class="btn-primary btn-warning"><i class="fa-solid fa-trash"></i></a>
                 </div>
-            </div>
+            </div> 
             {%endif%}
         {%endfor%}
     </div>

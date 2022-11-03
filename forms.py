@@ -12,7 +12,7 @@ class UserForm(FlaskForm):
     password_confirm = PasswordField("", validators=[DataRequired()])
     submit = SubmitField("Sign Up")
     
-class LoginForm(FlaskForm):
+class LoginForm(FlaskForm): 
     email = StringField("", validators=[DataRequired()])
     password = PasswordField("", validators=[DataRequired()])
     submit = SubmitField("Login")
