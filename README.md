@@ -1,7 +1,8 @@
 # clask
 Record audio -> Transcribe them -> Save transcriptions to profile
+Deployment: [clask](https://clask.herokuapp.com/)
 
-### Host Currently Offline
+### Some Host Functionalities Are Temporarily Down
 #### If you want to try it!
 1. Clone Repo
 2. ```cd flask-class```
