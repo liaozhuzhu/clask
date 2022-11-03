@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="container-primary form-container">
+    <div class="user-container">
+        <form method="POST" class="user-form">
+            <p class="form-header-text">Welcome Back</p>
+            {{form.hidden_tag()}}
+
+            {{form.email.label}}
+            {{form.email(placeholder="Email", class_="form-input")}}
+
+            {{form.password.label}}
+            {{form.password(placeholder="Password", class_="form-input")}}
+
+            <button type="submit" class="btn-primary">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+        </form>
+        <p>Don't have a Clask account?</p>
+        <a href="{{url_for('signup')}}"><span class="highlight">Sign up today!</span></a>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clask</title>
+    <link rel="icon" href="{{url_for('static', filename='/images/clask.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}" />
+    <script src="https://kit.fontawesome.com/af5fb8c1a6.js" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    {%include "navbar.html"%}
+
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'error' %}
+      <div class="alert-div" id="error" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-dismiss="alert" onclick="document.getElementById('error').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% elif category == "success" %}
+      <div class="alert-div" id="success" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-dismiss="alert" onclick="document.getElementById('success').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {%else%}
+      <div class="alert-div" id="disclaimer" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-dismiss="alert" onclick="document.getElementById('disclaimer').style.display='none'">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  {% endif %} {% endfor %} {% endif %} {% endwith %}
+  
+    <div class="container">
+        {%block content%}
+        {%endblock%}
+    </div>
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="{{ url_for('static', filename='js/WebAudioRecorder.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}" ></script>
+</body>
+</html>

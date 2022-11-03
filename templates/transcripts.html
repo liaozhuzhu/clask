@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{%block content%}
+<h1>Transcripts</h1>
+{%for transcript in transcripts%}
+   <h1>{{transcript.title}}</h1>
+    {{transcript.content}}
+    <a href="{{url_for('flaskclass_transcript', id=transcript.id)}}">View</a>
+{%endfor%}
+{%endblock%}

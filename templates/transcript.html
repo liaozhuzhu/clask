@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="container-primary form-container">
+    <div class="user-container">
+        <h1 class="transcript-content" id="transcript-title">{{transcript.title}} <span class="subtitle">by {{transcript.author}}</span></h1>
+        <p class="transcript-content" id="transcript-text">{{transcript.content}}</p>
+        <div class="btn-container">
+            {%if current_user.id == transcript.transcriptor.id%}
+                <a href="{{url_for('flaskclass_edit_transcript', id=transcript.id)}}" class="btn-primary">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+            {%endif%}
+            <a class="btn-primary" id="btn-share">Share <i class="fa-solid fa-share"></i></a>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/transcript.js')}}"></script>
+{%endblock%}

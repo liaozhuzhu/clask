@@ -1,0 +1,30 @@
+{%extends "base.html"%}
+{%block content%}
+    <div class="container-main" id="container-index">
+        <h1 class="step-title">Step 1 - <span class="highlight">Record</span></h1>
+
+        <div class="container-inner">
+            <div id="controls">
+                <button class="btn-primary" id="recordButton">Record</button>
+                <button class="btn-disabled" id="stopButton" disabled>Stop</button>
+            </div>
+            <span class="message" id="log"></span>
+        </div>
+
+        <h1 class="step-title">Step 2 - <span class="highlight">Playback / Download</span></h1> 
+        <div class="container-inner">
+            <span id="recordingsList"></span>
+        </div>
+                
+        <h1 class="step-title">Step 3 - <span class="highlight">Upload / Transcribe</span><p class="disclaimer">Please make sure all files are stored inside your default "Downloads" folder or inside a folder named "Downloads" connected to
+                your home directory </p></h1> 
+        <div class="container-inner" id="speechContainer">
+            <form class="form" method="post" enctype="multipart/form-data" id="transcribe-form">
+                <input class="file-input" type="file" name="file" id="file-upload" id="file-input"/>
+                <input class="btn-primary" type="submit" id="submitButton" value="Transcribe"/>
+            </form>
+            <div class="loader" id="load-icon"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/load.js') }}" ></script>
+{%endblock%}

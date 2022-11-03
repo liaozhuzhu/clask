@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="container-primary form-container">
+    <div class="user-container">
+        <h1>Edit</h1>
+        <form method="POST" class="user-form">
+            {{form.hidden_tag()}}
+            <div class="input-container">
+                {{form.title.label}}
+                {{form.title(class_="form-input")}}
+    
+                {{form.author.label}}
+                {{form.author(class_="form-input")}}
+            </div>
+
+            {{form.content.label}}
+            {{form.content(class_="content-input")}}
+
+            <div class="btn-container">
+                <button type="submit" class="btn-primary">Update <i class="fa-solid fa-pen-to-square"></i></button>
+                <a class="btn-primary btn-warning" href="{{url_for('delete_transcript', id=transcript.id)}}">Remove <i class="fa-solid fa-trash"></i></a>
+            </div>
+
+        </form>
+    </div>
+</div>
+{%endblock%}

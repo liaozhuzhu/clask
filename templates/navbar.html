@@ -1,0 +1,19 @@
+<div class="navbar">
+    {%if current_user.is_authenticated%}
+        <div class="navbar-header">
+            <div class="logo"><a href="{{url_for('index')}}"><img src="{{url_for('static', filename='/images/clask.png') }}" class="logo"></a></div>
+            <a href="{{url_for('dashboard')}}">Dashboard <i class="fa-solid fa-table-columns"></i></a>
+        </div>
+    {%else%}
+        <div class="logo"><a href="{{url_for('index')}}"><img src="{{url_for('static', filename='/images/clask.png') }}" class="logo"></a></div>
+    {%endif%}
+    <ul class="navbar-list">
+        {%if current_user.is_authenticated %}
+            <li><a href="{{url_for('update_user', id=current_user.id)}}">{{ current_user.name[0]|upper}}{{current_user.name[1:] }} <i class="fa-solid fa-user"></i></a>
+            <li><a href="{{url_for('logout')}}" class="btn-primary btn-warning">Logout <i class="fa-solid fa-door-open"></i></a></li>
+        {%else%}
+            <li><a href="{{url_for('login')}}">Login <i class="fa-solid fa-right-to-bracket"></i></a></li>
+            <li><a href="{{url_for('signup')}}" class="btn-primary">Sign Up <i class="fa-solid fa-user-plus"></i></a></li>
+        {%endif%}
+    </ul>
+</div>

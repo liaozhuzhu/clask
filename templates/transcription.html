@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{%block content%}
+    <div class="container-primary form-container">
+        <div class="user-container">
+            <h1>Transcription: </h1>
+            {%if transcript %}
+                {%if current_user.is_authenticated%}
+                    <form method="POST" class="user-form">
+                        {{form.hidden_tag()}}
+
+                        <div class="input-container">
+                            {{form.title.label}}
+                            {{form.title(class_="form-input", placeholder="Title")}}
+                
+                            {{form.author.label}}
+                            {{form.author(class_="form-input", value=current_user.name)}}
+                        </div>
+                
+                        {{form.content.label}}
+                        {{form.content(id="transcription-content", class_="content-input")}}
+                
+                        <div class="btn-container">
+                            <button type="submit" class="btn-primary">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                        </div>
+                    </form>
+                    <!-- This will eventually be hidden by index.js -->
+                    <div id="transcription-container">
+                        <p id="transcribed-text">{{transcript}}</p>
+                    </div>
+                {%else%}
+                    <p class="disclaimer">Log in to save and customize your transcripts!</p>
+                    <div class="content">
+                        <p id="transcribed-text">{{transcript}}</p>
+                    </div>
+                {%endif%}
+            {%endif%}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js')}}"></script>
+{%endblock%}
