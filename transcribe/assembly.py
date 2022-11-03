@@ -50,7 +50,7 @@ def get_transcription_result_url(audio_url):
         elif data['status'] == 'error':
             return data, data['error']
         
-        print("Transcriping...")
+        print("Running...")
         time.sleep(10)
 
 def save_transcript(audio_url, filename):
