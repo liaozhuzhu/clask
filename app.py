@@ -50,10 +50,10 @@ def index():
         
         if file:
             file.save(os.path.join(app.config["UPLOAD_FOLDER"]), file.filename)
-            path_to_download_folder = str(f"{os.path.expanduser( '~' )}/Downloads")
+            path_to_download_folder = str(os.path.join(os.path.expanduser("~"), "Downloads"))
             # path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
             # path = f"{path_to_download_folder}/{file.filename}"
-            path = (f"/static/transcripts/{file.filename}")
+            path = (f"path_to_download_folder/{file.filename}")
         
             audio_url = upload(path)
             transcript = save_transcript(audio_url, path)
