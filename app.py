@@ -11,7 +11,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from forms import UserForm, LoginForm, TranscriptForm
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:password@localhost/class"
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY");
 
