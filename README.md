@@ -2,7 +2,7 @@
 Record audio -> Transcribe them -> Save transcriptions to profile
 
 ### Host Currently Offline
-#### If you want to try it offline
+#### If you want to try it!
 1. Clone Repo
 2. ```pip3 install -r requirements.txt```
 3. ```cd flask-class```
