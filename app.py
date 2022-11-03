@@ -11,8 +11,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from forms import UserForm, LoginForm, TranscriptForm
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:password@localhost/class"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://vmiibldxtmcphr:254659b967cf2bdb333c38fb6b13926ab49005e2e7ad74c9bdf33fecf4480a18@ec2-3-229-165-146.compute-1.amazonaws.com:5432/d9lf9889m8460d"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:password@localhost/class"
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY");
 
 db = SQLAlchemy(app)
@@ -45,16 +45,14 @@ def index():
             flash("File not found", category="error")
 
         file = request.files["file"]
+        file.save(os.path.join(app.config["UPLOAD_FOLDER"], file.filename))
         if file.filename == "":
             flash("Please Upload a File", category="error")
-        
+            
         if file:
-            file.save(os.path.join(app.config["UPLOAD_FOLDER"]), file.filename)
-            path_to_download_folder = str(os.path.join(os.path.expanduser("~"), "Downloads"))
             # path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
             # path = f"{path_to_download_folder}/{file.filename}"
-            path = (f"path_to_download_folder/{file.filename}")
-        
+            path = (f"{app.config['UPLOAD_FOLDER']}/{file.filename}")
             audio_url = upload(path)
             transcript = save_transcript(audio_url, path)
             
