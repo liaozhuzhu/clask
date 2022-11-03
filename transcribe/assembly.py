@@ -23,6 +23,7 @@ def upload(filename):
                             headers=headers,
                             data=read_file(filename))
 
+    print(upload_response.json()['upload_url'])
     audio_url = upload_response.json()['upload_url']
     return audio_url
 
