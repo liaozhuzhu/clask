@@ -1,5 +1,6 @@
 # clask
 Record audio -> Transcribe them -> Save transcriptions to profile
+
 Deployment: [clask](https://clask.herokuapp.com/)
 
 ### Some Host Functionalities Are Temporarily Down
